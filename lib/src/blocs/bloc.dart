@@ -15,6 +15,12 @@ class Bloc extends Object with Validators{
   Stream<String> get password => _passwordController.stream.transform(validatePassword);
   Stream<bool> get submitValid => Observable.combineLatest2(email, password, (e,p)=>true);
 
+  submit(){
+    final email = _emailController.value;
+    final password = _passwordController.value;
+    print("Email is $email");
+    print("Password is $password");
+  }
 
   dispose(){
     _emailController.close();
